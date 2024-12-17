@@ -1,0 +1,94 @@
+### Create or update an admin
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+
+{
+  "id": 1,
+  "username": "admin1",
+  "password": "password123",
+  "email": "admin1@example.com"
+}
+
+### Get admin by username
+GET http://localhost:8080/api/admins/username/admin1
+
+### Get admin by ID
+GET http://localhost:8080/api/admins/1
+
+### Delete admin by ID
+DELETE http://localhost:8080/api/admins/1
+
+### TransactionController APIs
+
+### Create or update a transaction
+POST http://localhost:8080/api/transactions
+Content-Type: application/json
+
+{
+  "id": 1,
+  "accountId": 1,
+  "amount": 100.0,
+  "transactionDate": "2023-10-01T12:00:00Z"
+}
+
+### Get all transactions
+GET http://localhost:8080/api/transactions
+
+### Get transactions by account ID
+GET http://localhost:8080/api/transactions/account/1
+
+### Get transaction by ID
+GET http://localhost:8080/api/transactions/1
+
+### Delete transaction by ID
+DELETE http://localhost:8080/api/transactions/1
+
+### CustomerController APIs
+
+### Create or update a customer
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+
+{
+  "id": 1,
+  "username": "customer1",
+  "email": "customer1@example.com",
+  "password": "password123"
+}
+
+### Get all customers
+GET http://localhost:8080/api/customers
+
+### Get customer by ID
+GET http://localhost:8080/api/customers/1
+
+### Get customer by email
+GET http://localhost:8080/api/customers/email/customer1@example.com
+
+### Delete customer by ID
+DELETE http://localhost:8080/api/customers/1
+
+### AccountController APIs
+
+### Create or update an account
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+
+{
+  "id": 1,
+  "accountNumber": "123456789",
+  "balance": 1000.0,
+  "userId": 1
+}
+
+### Get all accounts
+GET http://localhost:8080/api/accounts
+
+### Get account by account number
+GET http://localhost:8080/api/accounts/account-number/123456789012
+
+### Get account by ID
+GET http://localhost:8080/api/accounts/0
+
+### Delete account by ID
+DELETE http://localhost:8080/api/accounts/1
