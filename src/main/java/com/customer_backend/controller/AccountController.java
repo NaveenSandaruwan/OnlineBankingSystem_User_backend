@@ -50,4 +50,14 @@ public class AccountController {
         accountService.deleteAccount(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/balance")
+    public ResponseEntity<?> getAccountBalance(@RequestParam String accountNumber) {
+        Account account = accountService.getAccountByAccountNumber(accountNumber);
+        if (account != null) {
+            return ResponseEntity.ok(account.getBalance());
+        } else {
+            return ResponseEntity.status(404).body("Account not found");
+        }
+    }
+    
 }

@@ -92,3 +92,28 @@ GET http://localhost:8080/api/accounts/0
 
 ### Delete account by ID
 DELETE http://localhost:8080/api/accounts/1
+
+### Login with the created user
+POST http://192.168.8.156:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john.doe@example.com",
+  "password": "12345"
+}
+
+### Get user details by email
+GET http://localhost:8080/api/auth/user-details?email=john.doe@example.com
+
+
+### Authenticate with email, account number, and password
+POST http://192.168.8.156:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john.doe@example.com",
+  "accountNumber": "123456789012",
+  "password": "12345"
+}
+### Get account balance by account number
+GET http://192.168.8.156:8080/api/accounts/balance?accountNumber=123456789012

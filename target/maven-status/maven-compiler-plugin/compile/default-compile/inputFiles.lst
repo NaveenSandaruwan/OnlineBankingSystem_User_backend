@@ -1,12 +1,16 @@
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\controller\TransactionController.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\controller\AdminController.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\service\TransactionService.java
+E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\controller\AuthenticationController.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\models\AuditLog.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\controller\CustomerController.java
+E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\service\AuthenticationService.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\repository\TransactionRepository.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\models\Notification.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\controller\AccountController.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\service\CustomerService.java
+E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\dto\LoginRequest.java
+E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\repository\UserRepository.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\models\User.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\models\Account.java
 E:\VS CODE\online banking\User_backend\src\main\java\com\customer_backend\repository\AdminRepository.java
