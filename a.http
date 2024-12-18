@@ -50,7 +50,7 @@ POST http://localhost:8080/api/customers
 Content-Type: application/json
 
 {
-  "id": 1,
+  
   "username": "customer1",
   "email": "customer1@example.com",
   "password": "password123"
@@ -117,3 +117,52 @@ Content-Type: application/json
 }
 ### Get account balance by account number
 GET http://192.168.8.156:8080/api/accounts/balance?accountNumber=123456789012
+
+### Create a new customer
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "joh1.doe@example.com",
+  "phone": "1234567891",
+  "passwordHash": "12345",
+  "address": "123 Main St"
+}
+
+### Create a new account for the user
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+
+{
+  "userId": 12,  
+  "accountNumber": "12345678901",
+  "accountType": "Savings",
+  "balance": 1000.00
+}
+### Add a new card
+POST http://localhost:8080/api/cards
+Content-Type: application/json
+
+{
+  "userId": 12,  
+  "accountNumber": "12345678901",
+  "cardNumber": "1234567812345678",
+  "cardType": "Debit",
+  "expiryDate": "2025-12-31",
+  "cvv": "123"
+}
+
+### Update card details
+PUT http://localhost:8080/api/cards/1234567812345678
+Content-Type: application/json
+
+{
+  "cardType": "Credit",
+  "expiryDate": "2026-12-31",
+  "cvv": "456"
+}
+
+### Get card details by account number
+GET http://localhost:8080/api/cards/account/1234567890123456
