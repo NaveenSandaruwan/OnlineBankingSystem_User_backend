@@ -38,8 +38,11 @@ public class AuthenticationService {
             User user = userOptional.get();
 
             UserAccountDTO userAccountDTO = new UserAccountDTO();
+            userAccountDTO.setUserId(user.getId());
             userAccountDTO.setFirstName(user.getFirstName());
             userAccountDTO.setLastName(user.getLastName());
+            userAccountDTO.setPhone(user.getPhone());
+            userAccountDTO.setAddress(user.getAddress());
 
             return userAccountDTO;
         }
