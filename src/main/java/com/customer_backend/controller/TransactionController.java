@@ -1,5 +1,6 @@
 package com.customer_backend.controller;
 
+import com.customer_backend.dto.TransactionRequest;
 import com.customer_backend.models.Transaction;
 import com.customer_backend.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,38 +16,21 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    // Create or update a transaction
     @PostMapping
-    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
-        Transaction savedTransaction = transactionService.saveTransaction(transaction);
-        return ResponseEntity.ok(savedTransaction);
+    public ResponseEntity<String> performTransaction(@RequestBody TransactionRequest request) {
+        try {
+            transactionService.performTransaction(request.getAccountNumber(), request.getTransactionType(), request.getAmount(), request.getRecipientAccountNumber(), request.getDescription(), request.getRecipientName());
+            return ResponseEntity.ok("Transaction successful");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Transaction failed: " + e.getMessage());
+        }
     }
 
-    // Get all transactions
     @GetMapping
-    public ResponseEntity<List<Transaction>> getAllTransactions() {
-        List<Transaction> transactions = transactionService.getAllTransactions();
+    public ResponseEntity<List<Transaction>> getTransactionsByAccountNumber(@RequestParam String accountNumber) {
+        List<Transaction> transactions = transactionService.getTransactionsByAccountNumber(accountNumber);
         return ResponseEntity.ok(transactions);
-    }
-
-    // Get transactions by account ID
-    @GetMapping("/account/{accountId}")
-    public ResponseEntity<List<Transaction>> getTransactionsByAccountId(@PathVariable Long accountId) {
-        List<Transaction> transactions = transactionService.getTransactionsByAccountId(accountId);
-        return ResponseEntity.ok(transactions);
-    }
-
-    // Get transaction by ID
-    @GetMapping("/{id}")
-    public ResponseEntity<Transaction> getTransactionById(@PathVariable Long id) {
-        Transaction transaction = transactionService.getTransactionById(id);
-        return transaction != null ? ResponseEntity.ok(transaction) : ResponseEntity.notFound().build();
-    }
-
-    // Delete transaction by ID
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTransaction(@PathVariable Long id) {
-        transactionService.deleteTransaction(id);
-        return ResponseEntity.noContent().build();
     }
 }

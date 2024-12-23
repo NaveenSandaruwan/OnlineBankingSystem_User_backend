@@ -1,10 +1,6 @@
 package com.customer_backend.models;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "accounts")
@@ -16,7 +12,7 @@ public class Account {
     private int accountId;
 
     @Column(name = "user_id")
-    private Long userId;
+    private int userId;
 
     @Column(name = "account_number", unique = true)
     private String accountNumber;
@@ -36,11 +32,11 @@ public class Account {
         this.accountId = accountId;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -65,6 +61,9 @@ public class Account {
     }
 
     public void setBalance(Double balance) {
+        if (balance < 0) {
+            throw new IllegalArgumentException("Insufficient funds");
+        }
         this.balance = balance;
     }
 

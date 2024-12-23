@@ -24,7 +24,7 @@ public class AuthenticationService {
         Optional<User> userOptional = userRepository.findByEmail(loginRequest.getEmail());
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            Optional<Account> accountOptional = accountRepository.findByAccountNumberAndUserId(loginRequest.getAccountNumber(), user.getId());
+            Optional<Account> accountOptional = accountRepository.findByAccountNumberAndUserId(loginRequest.getAccountNumber(), user.getId().intValue());
             if (accountOptional.isPresent() && user.getPasswordHash().equals(loginRequest.getPassword())) {
                 return true;
             }
@@ -38,7 +38,7 @@ public class AuthenticationService {
             User user = userOptional.get();
 
             UserAccountDTO userAccountDTO = new UserAccountDTO();
-            userAccountDTO.setUserId(user.getId());
+            userAccountDTO.setUserId(user.getId().intValue());
             userAccountDTO.setFirstName(user.getFirstName());
             userAccountDTO.setLastName(user.getLastName());
             userAccountDTO.setPhone(user.getPhone());

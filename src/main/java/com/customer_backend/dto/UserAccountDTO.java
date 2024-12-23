@@ -1,18 +1,18 @@
 package com.customer_backend.dto;
 
 public class UserAccountDTO {
-    private Long userId;
+    private int userId;
     private String firstName;
     private String lastName;
     private String phone;
     private String address;
 
     // Getters and Setters
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
