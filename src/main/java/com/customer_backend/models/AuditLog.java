@@ -1,11 +1,7 @@
 package com.customer_backend.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "audit_logs")
@@ -13,51 +9,44 @@ public class AuditLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "log_id")
+    private int logId;
 
-    @Column(name = "action")
-    private String action;
+    @Column(name = "user_id", nullable = false)
+    private int userId;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "action_type", nullable = false)
+    private String actionType;
 
-    @Column(name = "timestamp")
-    private String timestamp;
-
-    @Column(name = "details")
+    @Column(name = "details", nullable = false)
     private String details;
 
+    @Column(name = "action_date", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Timestamp actionDate;
+
     // Getters and Setters
-    public Long getId() {
-        return id;
+    public int getLogId() {
+        return logId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLogId(int logId) {
+        this.logId = logId;
     }
 
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public String getActionType() {
+        return actionType;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setActionType(String actionType) {
+        this.actionType = actionType;
     }
 
     public String getDetails() {
@@ -68,8 +57,11 @@ public class AuditLog {
         this.details = details;
     }
 
-    @Override
-    public String toString() {
-        return "AuditLog{id=" + id + ", action='" + action + "', userId=" + userId + ", timestamp='" + timestamp + "', details='" + details + "'}";
+    public Timestamp getActionDate() {
+        return actionDate;
+    }
+
+    public void setActionDate(Timestamp actionDate) {
+        this.actionDate = actionDate;
     }
 }

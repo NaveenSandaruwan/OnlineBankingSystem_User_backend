@@ -166,3 +166,98 @@ Content-Type: application/json
 
 ### Get card details by account number
 GET http://localhost:8080/api/cards/account/12345678901
+
+
+### Add an electricity bill payment
+POST http://192.168.8.156:8080/api/bill-payments/electricity
+Content-Type: application/json
+
+{
+  "userId": 12,
+  "accountNumber": "12345678901",
+  "electricityAccountNo": "ELEC123456",
+  "amount": 100.00
+}
+
+### Add a water bill payment
+POST http://192.168.8.156:8080/api/bill-payments/water
+Content-Type: application/json
+
+{
+  "userId": 12,
+  "accountNumber": "12345678901",
+  "waterAccountNo": 12345,
+  "amount": 850.00
+}
+
+### Add a telecommunication bill payment
+POST http://192.168.8.156:8080/api/bill-payments/telecommunication
+Content-Type: application/json
+
+{
+  "userId": 12,
+  "accountNumber": "12345678901",
+  "telNo": "TEL123456",
+  "amount": 875.00
+}
+
+### Add an insurance bill payment
+POST http://192.168.8.156:8080/api/bill-payments/insurance
+Content-Type: application/json
+
+{
+  "userId": 12,
+  "accountNumber": "12345678901",
+  "insuranceNo": "INS123456",
+  "amount": 1200.00
+}
+
+### Perform a transfer transaction
+POST http://192.168.8.156:8080/api/transactions
+Content-Type: application/json
+
+{
+  "accountNumber": "12345678901",
+  "transactionType": "Transfer",
+  "amount": 851.00,
+  "recipientAccountNo": "123456789012",  
+  "description": "Transfer transaction",
+  "recipientName": "Recipient Name"
+}
+
+### Perform a deposit transaction
+POST http://192.168.8.156:8080/api/transactions
+Content-Type: application/json
+
+{
+  "accountNumber": "12345678901",
+  "amount": 100.00,
+  "description": "Deposit transaction"
+}
+
+### Perform a withdrawal transaction
+POST http://192.168.8.156:8080/api/transactions
+Content-Type: application/json
+
+{
+  "accountNumber": "12345678901",  
+  "transactionType": "Withdrawal",
+  "amount": 50.00,
+  "description": "Withdrawal transaction"
+}
+
+### Perform a transfer transaction
+POST http://192.168.8.156:8080/api/transactions
+Content-Type: application/json
+
+{
+  "accountNumber": "12345678901", 
+  "transactionType": "Transfer",
+  "amount": 875.00,
+  "recipientAccountNumber": "123456789012", 
+  "description": "Transfer transaction",
+  "recipientName": "Recipient Name"
+}
+
+### Get all transactions for an account number
+GET http://192.168.8.156:8080/api/transactions?accountNumber=12345678901

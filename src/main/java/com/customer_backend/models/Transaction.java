@@ -1,11 +1,7 @@
 package com.customer_backend.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "transactions")
@@ -13,35 +9,45 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "transaction_id")
+    private int transactionId;
 
-    @Column(name = "account_id")
-    private Long accountId;
+    @Column(name = "account_no", nullable = false)
+    private String accountNumber;
 
-    @Column(name = "transaction_type")
+    @Column(name = "transaction_type", nullable = false)
     private String transactionType;
 
-    @Column(name = "amount")
-    private Double amount;
+    @Column(name = "amount", nullable = false)
+    private double amount;
+
+    @Column(name = "recipient_account_no")
+    private String recipientAccountNumber;
+
+    @Column(name = "transaction_date", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Timestamp transactionDate;
 
     @Column(name = "description")
     private String description;
 
+    @Column(name = "recipient_name")
+    private String recipientName;
+
     // Getters and Setters
-    public Long getId() {
-        return id;
+    public int getTransactionId() {
+        return transactionId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTransactionId(int transactionId) {
+        this.transactionId = transactionId;
     }
 
-    public Long getAccountId() {
-        return accountId;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public String getTransactionType() {
@@ -52,12 +58,28 @@ public class Transaction {
         this.transactionType = transactionType;
     }
 
-    public Double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public String getRecipientAccountNumber() {
+        return recipientAccountNumber;
+    }
+
+    public void setRecipientAccountNumber(String recipientAccountNumber) {
+        this.recipientAccountNumber = recipientAccountNumber;
+    }
+
+    public Timestamp getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(Timestamp transactionDate) {
+        this.transactionDate = transactionDate;
     }
 
     public String getDescription() {
@@ -68,9 +90,11 @@ public class Transaction {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Transaction{id=" + id + ", accountId=" + accountId + ", transactionType='" + transactionType + "', amount=" + amount + "}";
+    public String getRecipientName() {
+        return recipientName;
+    }
+
+    public void setRecipientName(String recipientName) {
+        this.recipientName = recipientName;
     }
 }
-
